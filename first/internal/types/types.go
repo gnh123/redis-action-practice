@@ -2,11 +2,11 @@
 package types
 
 type ArticleReq struct {
-	Title  string `json:"title"`
-	Link   string `json:"link"`
-	Poster string `json:"poster"`
-	Time   string `json:"time"`
-	Votes  int    `json:"votes"`
+	Title  string `json:"title" redis:"title"`
+	Link   string `json:"link" redis:"link"`
+	Poster string `json:"poster" redis:"poster"`
+	Time   string `json:"time" redis:"time"`
+	Votes  int    `json:"votes" redis:"votes"`
 }
 
 type ArticleResp struct {

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gnh123/redis-action-practice/first/internal/types"
-	"github.com/go-redis/redis/v8"
+	"github.com/go-redis/redis/v9"
 )
 
 type Storage struct {
@@ -78,8 +78,8 @@ func (s *Storage) PostArticle(req *types.ArticleReq) int64 {
 
 	s.rdb.HMSet(context.TODO(), article, req)
 
-	s.rdb.ZAdd(context.TODO(), "score:", &redis.Z{Score: float64(now + VOTE_SCORE), Member: article})
-	s.rdb.ZAdd(context.TODO(), "time:", &redis.Z{Score: float64(now), Member: article})
+	s.rdb.ZAdd(context.TODO(), "score:", redis.Z{Score: float64(now + VOTE_SCORE), Member: article})
+	s.rdb.ZAdd(context.TODO(), "time:", redis.Z{Score: float64(now), Member: article})
 	return articleID
 }
 
